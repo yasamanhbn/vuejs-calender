@@ -1,5 +1,13 @@
 <template>
     <div>
+        <header class="header">
+            <div class="h1">
+                <h1>Vue.js calender</h1>
+            </div>
+            <div>
+                <month-info></month-info>
+            </div>
+        </header>
         <div class="day-bar">
             <div>Mon</div>
             <div>Tue</div>
@@ -9,50 +17,22 @@
             <div>Sat</div>
             <div>Sun</div>
         </div>
-        <div class="main-container">
-            <div v-for="week in weeks" class="calender-week">
-                <calender-day v-for="day in week" :day="day"></calender-day>
-            </div>
-        </div>
+        <calender-month></calender-month>
+        <event-form></event-form>
     </div>
 </template>
 
 <script>
-    import calenderDay from './components/calender-day.vue'
+    import calenderMonth from './components/calender-month.vue'
+    import monthInfo from "./components/monthInfo.vue";
+    import eventForm from './components/event-form.vue'
 
     export default {
-        data() {
-            return {
-                year: '2020',
-                month: '9'
-            }
-        },
         components: {
-            calenderDay
+            calenderMonth,
+            monthInfo,
+            eventForm
         },
-        computed: {
-            days() {
-                let days = [];
-                let currentDay = this.$moment(`${this.year}-${this.month}-1`, 'YYYY-MM-DD');
-                while (String((currentDay.month() + 1)) === this.month) {
-                    days.push(currentDay);
-                    currentDay = this.$moment(currentDay).add(1, 'days');
-                }
-                return days
-            },
-            weeks() {
-                let week = [];
-                let weeks = [];
-                for (let day of this.days) {
-                    week.push(day);
-                    if (week.length === 7) {
-                        weeks.push(week);
-                        week = []
-                    }
-                }
-                return weeks;
-            }
-        }
     }
 </script>
 
@@ -71,21 +51,35 @@
         --pink: rgba(255, 182, 193, 0.3);
         --pickled-bluewood: #35495e;
     }
-    .day-bar{
+
+    body {
+        background-color: #e2dede;
+        padding-left: 1%;
+        padding-right: 1%;
+        padding-bottom: 1%;
+    }
+
+    .header {
+        color: var(--pickled-bluewood);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .h1 {
+        font-size: 25px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .day-bar {
         display: flex;
         justify-content: space-around;
         font-size: 20px;
         font-weight: bold;
         color: var(--pickled-bluewood);
-    }
-    .main-container {
-        width: 100%;
-        border-bottom: solid 1px var(--alto);
-        border-right: solid 1px var(--alto);
-    }
-
-    .calender-week {
-        display: flex;
-        justify-content: flex-start;
     }
 </style>
