@@ -14,6 +14,9 @@ app.get('/', (req, res) => {
 
 });
 
+app.post('/add_event',(req,res)=>{});
+
+
 const server = http.createServer(app);
 
 if (process.env.NODE_ENV === 'development') {

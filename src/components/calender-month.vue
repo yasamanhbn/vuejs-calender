@@ -68,7 +68,8 @@
 
 <style scoped>
     .main-container {
-        width: 100%;
+        width: 90%;
+        margin:0 auto;
         border-bottom: solid 1px var(--alto);
         border-right: solid 1px var(--alto);
         background-color: var(--gallery)

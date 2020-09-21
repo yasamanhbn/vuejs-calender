@@ -64,6 +64,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 90%;
+        margin: 0 auto;
     }
 
     .h1 {
@@ -77,6 +79,8 @@
 
     .day-bar {
         display: flex;
+        width: 90%;
+        margin: 0 auto;
         justify-content: space-around;
         font-size: 20px;
         font-weight: bold;

@@ -20,6 +20,7 @@
                 }
                 else
                     this.$store.commit('setCurrentMonth', this.month + 1)
+                this.$store.commit("toggleFormEvent",false);
 
             },
             dec() {
@@ -29,6 +30,7 @@
                 }
                 else
                     this.$store.commit('setCurrentMonth', this.month - 1)
+                this.$store.commit("toggleFormEvent",false);
             }
         },
         computed: {
